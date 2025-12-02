@@ -1,0 +1,25 @@
+{
+    "name": "advent-of-code",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/moritz-grimm/advent-of-code.git"
+    },
+    "license": "MIT",
+    "author": "moritz-grimm",
+    "type": "module",
+    "scripts": {
+        "day:01": "cd 2025/day-01 && npx tsx ./solution.ts",
+        "lint": "npx eslint",
+        "lint:fix": "npx eslint --fix",
+        "sort-package-json": "npx sort-package-json"
+    },
+    "devDependencies": {
+        "@moritz-grimm/eslint-config-moritz-grimm": "^1.0.1",
+        "@types/node": "^24.10.0",
+        "eslint": "^9.39.1",
+        "globals": "^16.4.0",
+        "tsx": "^4.20.6",
+        "typescript": "^5.9.3"
+    }
+}
