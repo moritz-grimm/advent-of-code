@@ -11,6 +11,7 @@
     "scripts": {
         "day:01": "cd 2025/day-01 && npx tsx ./solution.ts",
         "day:02": "cd 2025/day-02 && npx tsx ./solution.ts",
+        "day:03": "cd 2025/day-03 && npx tsx ./solution.ts",
         "lint": "npx eslint",
         "lint:fix": "npx eslint --fix",
         "sort-package-json": "npx sort-package-json"
