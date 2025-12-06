@@ -32,6 +32,24 @@ function solvePart1(input: string): number {
     return joltageSum;
 }
 
+function solvePart2(input: string): bigint {
+    const start = performance.now();
+    const inputArray = parseInput(input);
+    let joltageSum = 0n;
+
+    for (const arr of inputArray) {
+        const digitsToRemove = arr.length - 12;
+        const num = BigInt(arr.join(""));
+        const maxNumber = getMaxNumber(num, digitsToRemove);
+        joltageSum += maxNumber;
+    }
+
+    const end = performance.now();
+    console.log(`Runtime Part 2: ${(end - start).toFixed(2)} ms`);
+
+    return joltageSum;
+}
+
 function parseInput(input: string): number[][] {
     return input
         .trim()
@@ -39,5 +57,26 @@ function parseInput(input: string): number[][] {
         .map(row => row.split("").map(Number));
 }
 
+function getMaxNumber(num: bigint, digitsToRemove: number): bigint {
+    for (let j = 0; j < digitsToRemove; j++) {
+
+        let ans = 0n;
+        let i = 1n;
+
+        while (num / i > 0n) {
+            const temp = num / (i * 10n) * i + (num % i);
+            i *= 10n;
+
+            ans = temp > ans ? temp : ans;
+        }
+
+        num = ans;
+    }
+
+    return num;
+}
+
 const input = readFileSync("./input.txt", "utf-8");
 console.log(solvePart1(input));
+console.log();
+console.log(solvePart2(input));
