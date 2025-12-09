@@ -19,6 +19,31 @@ function solvePart1(input: string): number {
     return paperRolesSum;
 }
 
+function solvePart2(input: string): number {
+    const start = performance.now();
+    const grid = parseInput(input);
+    let paperRolesSum = 0;
+    let changed = true;
+
+    while (changed) {
+        changed = false;
+        for (let row = 0; row < grid.length; row++) {
+            for (let column = 0; column < grid[row].length; column++) {
+                if (grid[row][column] === "@" && isAccessible(grid, row, column)) {
+                    grid[row][column] = "X";
+                    changed = true;
+                    paperRolesSum++;
+                }
+            }
+        }
+    }
+
+    const end = performance.now();
+    console.log(`Runtime Part 2: ${(end - start).toFixed(2)} ms`);
+
+    return paperRolesSum;
+}
+
 function parseInput(input: string): string[][] {
     return input
         .trim()
@@ -50,3 +75,5 @@ function isAccessible(grid: string[][], row: number, col: number): boolean {
 
 const input = readFileSync("./input.txt", "utf-8");
 console.log(solvePart1(input));
+console.log();
+console.log(solvePart2(input));
